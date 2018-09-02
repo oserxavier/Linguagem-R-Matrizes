@@ -1,0 +1,132 @@
+---
+title: "Matrizes"
+author: "Osemar Xavier"
+date: "2 de Setembro de 2018"
+output: html_document
+---
+
+```{r}
+### Criando uma matriz com 6 numeros e 3 colunas
+### nc -> numero de colunas
+n1 <- matrix(1:6, nc = 3)
+n1
+```
+### Criando uma matriz com 6 numeros e 3 colunas que sera multiplicado por 10
+```{r}
+n2 <- matrix(10 * 1:6, nc =3)
+n2
+```
+### Operacoes em matrizes
+```{r}
+n1 + n2
+n1 - n2
+n1 / n2
+n1 ** n2
+```
+### Matriz transposta - a funcao t transforma a matriz n1 que era 2 linhas e 3 colunas em 3 linhas e 2 colunas 
+```{r}
+t(n1)
+```
+###multiplicao de matrizes -> produto cruzado
+```{r}
+t(n1) %*% n1
+```
+### cbind
+### Cria uma matriz e distribui a partir das colunas
+```{r}
+x <- cbind(1:4, 2:5)
+x
+```
+### rbind
+### Cria uma matriz e distribui a partir das linhas
+```{r}
+x <- rbind(1:4, 2:5)
+x
+```
+### Um exemplo pratico de como utilizar o cbind e rbind
+##### Digamos que temos 5 pessoas e cada uma consumiu um determinado produto (chiclete)
+```{r}
+vetorpessoa <- c("Maria", "Joao", "Marcos", "Claudio", "Roberto")
+vetorchiclete <- c(5,3,2,1,4)
+cbind(vetorpessoa, vetorchiclete)
+rbind(vetorpessoa, vetorchiclete)
+```
+### Com o byrow e possivel mudar a ordem de criacao dos elementos da matriz
+##### byrow = T -> ordem por linha
+##### byrow = F -> ordem por coluna
+```{r}
+n1 <- matrix(1:12, ncol=3, byrow = T)
+n1
+```
+### Tamanho
+```{r}
+length(n1)
+```
+### Dimenssoes
+```{r}
+dim(n1)
+```
+### linhas
+```{r}
+nrow(n1)
+```
+### numero de colunas
+```{r}
+ncol(n1)
+```
+### elementos na posicao
+```{r}
+n1[1,2]
+```
+### elementos na posicao de linha 3
+```{r}
+n1[3, ]
+```
+### nomes nas dimenssoes
+```{r}
+dimnames(n1)
+dimnames(n1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3"))
+dimnames(n1)
+```
+### linhas pelos nomes
+```{r}
+n1[c("L1", "L2"), ]
+n1[c(1,2), ]
+```
+### Funcoes de tabelas - soma -> linhas e colunas
+##### Faz o somatorio das linhas
+```{r}
+margin.table(n1, margin = 1)
+```
+### Faz o somatorio das colunas
+```{r}
+margin.table(n1, margin = 2)
+n1
+```
+### Funcao aply, mesmo resultado da funcao margin
+```{r}
+apply(n1, 1, sum)
+apply(n1, 2, sum)
+```
+### Media 
+```{r}
+apply(n1, 1, mean)
+apply(n1, 2, mean)
+```
+### Mediana
+```{r}
+apply(n1, 1, median)
+apply(n1, 2, median)
+```
+### Somatorio das colunas
+```{r}
+colSums(n1)
+
+x <-cbind(1,1:10)
+x
+```
+### Produto cruzado
+```{r}
+crossprod(x)
+t(x) %*% x
+```
